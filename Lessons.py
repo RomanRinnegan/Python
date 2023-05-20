@@ -1,47 +1,38 @@
-# Задание № 1
+# Задание 1
+from random import randrange
+lst=[randrange(1,10) for i in range(int(input("Введите длинну массива ")))]
+x=int(input('Введите число '))
+a=0
+for i in range(len(lst)):
+    if lst[i]==x:
+        a+=1
+print(lst)
+print("Ваше число встречается", a, "раз.")
 
-a = int(input("Введите члюбое целое число: "))
-b = float(input("Введите любое дробное число: "))
-word = input("Введите любую фразу: ")
-print("Ваше число:", a)
-print("Ваше дробное число:", b)
-print("Ваша фраза:", word)
+# Задание 2
 
-name = input("Введите ваше имя: ")
-password = input("Введите пароль: ")
-age = int(input("Укажите ваш возраст: "))
-print("Ваши данные для входа в аккаунт:", "имя -", name, "пароль -", password, "возраст -", age)
+lst=[i for i in range(int(input("Введите длинну массива ")))]
+x=int(input('Введите число '))
+c=0
+for i in lst:
+    if abs(x-lst[i]) < abs(x-c):
+        c=lst[i]
+print(c)
+print(lst)
 
-# Задание № 2
+# Задание 3
 
-seconds = int(input("Введите количество секунд:"))
-hour = seconds//3600
-seconds %= 3600
-minutes = seconds//60
-seconds %= 60
-
-print(f'{hour:02}', ":", f'{min:02}', ":", f'{seconds:02}')
-
-# Задание №3
-
-
-n = int(input("Введите целое число:"))
-print(str(n)+str(2*n)+str(3*n))
-
-print(f'{hour:02}', ":", f'{minutes:02}', ":", f'{seconds:02}')
-
-# Задание 4
-
-proceeds = int(input("Введите сумму выручки:"))
-costs = int(input("Введите сумму расходов:"))
-if proceeds > costs:
-    workers = int(input("Укажите количесство сотрудников:"))
-    profit = proceeds-costs
-    profitability = round(profit/proceeds, 2)
-    workers = round(profit/workers, 2)
-    print("Финансовый результат: Прибыль.", "Ее величина:", profit)
-    print("Рентабильность выручки составила:", profitability)
-    print("Прибыль фирмы в расчете на одного сотрудника составила:", workers)
-else:
-    profit = proceeds - costs
-    print("Финансовый результат: Убыток.", "Его величина:", - profit)
+scrabble = {
+    'a': 1, 'e': 1, 'i': 1, 'o': 1, 'u': 1, 'l': 1, 'n': 1, 's': 1, 't': 1, 'r': 1,
+    'd': 2, "g": 2,
+    'b': 3, 'c': 3, 'm': 3, 'p': 3,
+    'f': 4, 'h': 4, 'v': 4, 'w': 4, 'y': 4,
+    'k': 5,
+    'j': 8, 'x': 8,
+    "q":10, 'z': 10
+}
+sum = 0
+lst=input("Введите слово ")
+for i in lst:
+    sum +=scrabble[i]
+print(sum)
