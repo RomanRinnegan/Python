@@ -36,3 +36,4 @@ lst=input("Введите слово ")
 for i in lst:
     sum +=scrabble[i]
 print(sum)
+
