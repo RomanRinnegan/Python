@@ -2,17 +2,17 @@
 """Напишите программу, которая получает целое число и возвращает его шестнадцатеричное строковое представление.
 Функцию hex используйте для проверки своего результата"""
 
-# num = int(input('Число:', ))
-#
-# result_hex = ""
-# h = '0123456789ABCDEF'
-# num_for_hex = num
-# while num_for_hex > 0:
-#     result_hex += h[num_for_hex % 16]
-#     num_for_hex //= 16
-#
-# result_hex = result_hex[::-1]
-# print(result_hex, hex(num))
+num = int(input('Число:', ))
+
+result_hex = ""
+h = '0123456789ABCDEF'
+num_for_hex = num
+while num_for_hex > 0:
+    result_hex += h[num_for_hex % 16]
+    num_for_hex //= 16
+
+result_hex = result_hex[::-1]
+print(result_hex, hex(num))
 
 # Задание 2
 
