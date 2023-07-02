@@ -1,56 +1,46 @@
-# # # Задание 1
-# for i in range (1, 11):
-#     for j in range (i, i*10, i):
-#         print (j , end='\t')
-#     print()
-#
-# # Задание 2
-# a = int(input("Введите длинну стороны а :", ))
-# b = int(input("Введите длинну стороны b :", ))
-# c = int(input("Введите длинну стороны c :", ))
-# if a + b > c and b + c > a and a + c > b:
-#     print("Треугольник существует!")
-#     if a == b == c:
-#         print("Треугольник равносторонний!")
-#     elif a == b or a == c or b == c:
-#         print("Треугольние равнобедренный!")
-#     else:
-#         print("Треугольник разносторонний!")
-# else:
-#     print("Треугольник не существует!")
-#
-#
-#
-# # Задание 3
-#
-# num = int(input("Введите любое число от 0 до 100тыс.:", ))
-# counter = 0
-# for i in range(1, num+1):
-#     if num % i == 0:
-#         counter +=1
-# if counter <= 2:
-#     print("Число простое")
-# else:
-#     print("Число составное")
-#
-# print("Число делителей:", counter)
+#Задание 1
+"""Напишите программу, которая получает целое число и возвращает его шестнадцатеричное строковое представление.
+Функцию hex используйте для проверки своего результата"""
 
-# Задание 4
-from random import randint
+# num = int(input('Число:', ))
+#
+# result_hex = ""
+# h = '0123456789ABCDEF'
+# num_for_hex = num
+# while num_for_hex > 0:
+#     result_hex += h[num_for_hex % 16]
+#     num_for_hex //= 16
+#
+# result_hex = result_hex[::-1]
+# print(result_hex, hex(num))
 
-num = randint(0, 1000)
-guess = int(input("Угадайте загаданное число:", ))
-counter = 0
-while guess != num and counter < 11:
-    if guess < num :
-        guess = int(input("Мало! Нужно больше!:", ))
-        counter += 1
-    else:
-        guess = int(input("Много! Нужно меньше!:", ))
-        counter += 1
-if guess == num:
-    print(f'Ура! Вы угадали! ваше число: {guess}')
+# Задание 2
+
+"""Напишите программу, которая принимает две строки вида “a/b” - дробь с числителем и знаменателем. 
+Программа должна возвращать сумму и произведение* дробей. Для проверки своего кода используйте модуль fractions."""
+
+import math
+
+a = input("Напишите дробь со знаком деления '/':", ).split('/')
+b = input("Напишите дробь со знаком деления '/':", ).split('/')
+sum_numerator = f'{int(a[0]) + int(b[0])}'
+sum_denominator = f'{int(a[1]) + int(b[1])}'
+res_sum = f'Результат сложения: {sum_numerator} / {sum_denominator}'
+
+mult_numerator = int(f'{int(a[0]) * int(b[0])}')
+mult_denominator = int(f'{int(a[1]) * int(b[1])}')
+c = math.gcd(mult_numerator, mult_denominator)
+if mult_numerator % c == 0:
+    mult_numerator = mult_numerator // c
 else:
-    print(f'Cорян. Загаданное число было {num}')
+    mult_numerator = mult_numerator
+if mult_denominator % c == 0:
+    mult_denominator = mult_denominator // c
+else:
+    mult_denominator = mult_denominator
+res_mult = f'Результат произведения: {mult_numerator} / {mult_denominator}'
+
+print(res_sum, res_mult)
+
 
 
