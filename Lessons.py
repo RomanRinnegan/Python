@@ -1,46 +1,57 @@
-#Задание 1
-"""Напишите программу, которая получает целое число и возвращает его шестнадцатеричное строковое представление.
-Функцию hex используйте для проверки своего результата"""
 
-num = int(input('Число:', ))
+# Задание 1
+"""Дан список повторяющихся элементов. Вернуть список с дублирующимися элементами. В результирующем списке не должно быть дубликатов.
+Пример:
+[1, 2, 3, 1, 2, 4, 5] -> [1, 2]"""
 
-result_hex = ""
-h = '0123456789ABCDEF'
-num_for_hex = num
-while num_for_hex > 0:
-    result_hex += h[num_for_hex % 16]
-    num_for_hex //= 16
+from random import randrange
 
-result_hex = result_hex[::-1]
-print(result_hex, hex(num))
+my_list = [randrange(1,10) for i in range(int(input("Укажите размер списка:",)))]
+new_list = []
+new_new_list = []
+fil = None
+for i in range(len(my_list)):
+    for j in range(i+1, len(my_list)):
+        if my_list[j] == my_list[i] and my_list[j] != fil:
+            new_list.append(my_list[i])
+            fil = my_list[j]
+
+print(my_list)
+print(list(set(new_list)))
 
 # Задание 2
 
-"""Напишите программу, которая принимает две строки вида “a/b” - дробь с числителем и знаменателем. 
-Программа должна возвращать сумму и произведение* дробей. Для проверки своего кода используйте модуль fractions."""
-
-import math
-
-a = input("Напишите дробь со знаком деления '/':", ).split('/')
-b = input("Напишите дробь со знаком деления '/':", ).split('/')
-sum_numerator = f'{int(a[0]) + int(b[0])}'
-sum_denominator = f'{int(a[1]) + int(b[1])}'
-res_sum = f'Результат сложения: {sum_numerator} / {sum_denominator}'
-
-mult_numerator = int(f'{int(a[0]) * int(b[0])}')
-mult_denominator = int(f'{int(a[1]) * int(b[1])}')
-c = math.gcd(mult_numerator, mult_denominator)
-if mult_numerator % c == 0:
-    mult_numerator = mult_numerator // c
-else:
-    mult_numerator = mult_numerator
-if mult_denominator % c == 0:
-    mult_denominator = mult_denominator // c
-else:
-    mult_denominator = mult_denominator
-res_mult = f'Результат произведения: {mult_numerator} / {mult_denominator}'
-
-print(res_sum, res_mult)
+"""В большой текстовой строке подсчитать количество встречаемых слов и вернуть 10 самых частых. Не учитывать знаки препинания и регистр символов.
+За основу возьмите любую статью из википедии или из документации к языку"""
 
 
+text = 'Пе́рвый кресто́вый похо́д был организован в 1096 году решением римского папы Урбана II по просьбе византийского императора Алексея I ' \
+       'с целью помощи восточным христианам в защите Анатолии ( Малая Азия ) от наступления сельджуков' \
+       'В ходе похода также дополнительной целью стало освобождение священного города Иерусалима и Святой земли от мусульман ' \
+       'Первоначально обращение римского папы было адресовано только французскому рыцарству , ' \
+       'но впоследствии поход превратился в полномасштабную военную кампанию, а его идея охватила все христианские государства Западной Европы . ' \
+       'Феодалы и простой народ, по земле и морю , двинулись на Восток , по пути освободив от власти сельджуков западную часть ' \
+       'Малой Азии и устранив мусульманскую угрозу Византии, и в июле 1099 года завоевали Иерусалим . ' \
+       'Во время 1-го крестового похода было основано Иерусалимское королевство и другие христианские государства , ' \
+       'которые объединяются под названием Латинского Востока . ' \
+       'Важную роль в истории Крестовых походов сыграли духовно - рыцарские ордены .'
 
+text = text.lower().split()
+
+signs = ['.', ',', '-', '—', '(', ')','ii', 'i']
+
+new_dict = {}
+
+for i in text:
+    if not i in signs and len(i) > 2 :
+        new_dict[i] = new_dict.get(i, 0) + 1
+
+new_list = []
+for key, value in new_dict.items():
+    new_list.append((value, key))
+    new_list.sort(reverse=True)
+
+print(new_list[0:10])
+
+for freq, word in new_list[0:10]:
+    print(f' {word:>12} -> {freq:>1}')
